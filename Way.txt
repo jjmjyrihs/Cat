@@ -1,0 +1,24 @@
+$.ajax({
+                           url: '@Url.Action("AddToCart", "ControllerName")',
+                           type: 'GET',
+                           dataType: 'json',
+                           cache: false,
+                           data: { 'id': id },
+                           success: function (results) {
+                                alert(results)
+                           },
+                           error: function () {
+                            alert('Error occured');
+                           }
+                        });
+
+
+
+
+location.href = '@Url.Action("ToDelect", "Function", new { OrderID = ViewBag.Data[0].OrderID })';
+
+
+
+
+
+//¶ÇAllData¤£¦Y
