@@ -1,0 +1,70 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script> 
+    <script>
+        /*$(document).ready(function () {
+            $(".Delect").click(function () {
+                if (confirm("提醒! 資料刪除將無法復原")) {
+                    alert($(".Delect").$());
+                    alert("資料刪除成功");
+                    alert("正在重新導向頁面‧‧‧\r\n請按下確認重新載入");
+                    location.href = 'Url.Action("ToDelect","Function",
+                                    new { OrderID = ViewBag.Data[0].OrderID })';
+                };
+            });
+        });*/
+
+        function Delect(id) {
+            if (confirm("提醒! 資料刪除將無法復原")) {
+                alert("資料刪除成功 \r\n" +
+                      "正在重新導向頁面‧‧‧\r\n" +
+                    "請按下確認重新載入");                
+                location.href = '@Url.Action("Index","Delect", new { OrderID = @ViewBag.Data[0].OrderID })';
+            };
+        }
+        
+        function Update(id) {
+
+        }
+
+
+
+
+
+
+
+
+    </script>   
+</head>
+<body>
+    <div>                 
+            <table style="border:3px #cccccc solid;" cellpadding="10" border="1" align="center">
+                <tr>
+                    <td>訂單編號</td>
+                    <td>客戶名稱</td>
+                    <td>訂購日期</td>
+                    <td>出貨日期</td>
+                    <td>修改</td>
+                    <td>刪除</td>
+                </tr>
+                @using 
+                    @for (int i = 0; i < ((List<eSaleModel.Order>)ViewBag.Data).Count; i++)
+                    {
+                        <tr>
+                            <td>@ViewBag.Data[i].OrderID</td>                                                        
+                            <td>@ViewBag.Data[i].CustName</td>
+                            <td>@ViewBag.Data[i].OrderDate</td>
+                            <td>@ViewBag.Data[i].ShippedDate</td>
+                            <td><input type="button" id="@i" value="修改" onclick="Update(this.id)"/></td>
+                            <td><input type="button" id="@i" value="刪除" onclick="Delect(this.id)"/></td>                            
+                        </tr>
+                    }                  
+            </table>
+    </div>
+</body>
+</html>
